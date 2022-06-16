@@ -16,15 +16,32 @@
 
 <body>
     <header>
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand">Bakala</a>
-    </div>
-</nav>
+        <Main>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand">Bakala</a>
+            </div>
+        </nav>
     </header>
+        <!-- title -->
+        <h1 class="h1">Products in Store(<span id="total-products"></span>)</h1>
 
-    <main>
-        
+        <!-- Filter Bar -->
+        <div is="filter-bar">
+            <form action="">
+                <input type="text" name="search" placeholder="Enter Product Name">
+                <button>Search</button>
+            </form>
+            <select name="sort" id="sort-field">
+                <option value="asc">A-Z</option>
+                <option value="desc">Z-A</option>
+            </select>
+        </div>
+
+        <!-- Products  area -->
+        <div id="products-container" class="card-group">
+
+    </div>
     </main>
 
     <footer>

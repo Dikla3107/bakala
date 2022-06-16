@@ -1,67 +1,62 @@
 function addTax(price) {
     if (!price || price <= 0 || typeof (price) === 'string') {
-        throw Error("Nothing is for free! Please supply a price");
+        throw Error('Nothing is for free! please supply a price');
     }
-    const vat = 1.17; //maam
+
+    const vat = 1.17; // = maam
     const total = (price * vat).toFixed(2);
-    return (total);
+    return total;
 }
 
-function generateID() { //פונקציה מחולקת למשתנים
-  /*   const rand = Math.random(); // 0.234432654
-    console.log(`rand: ${rand}`);
-    const num = rand * 10000; //23443.2654
-        console.log(`num: ${num}`);
-    const floor = Math.floor(num) //23443
-        console.log(`floor: ${floor}`);
-    return Math.floor(Math.random()) *10000;
-    return floor;
- */ 
+function generateId() {
+    const time = new Date().getTime();
+    return Math.floor(Math.random() * time);
+}
 
-const time = new Date().getTime();
-return Math.floor(Math.random() * time);
+const products = [{
+        id: 1,
+        price: 15,
+        name: 'yellow cheese',
+        image: '2016/03/05/19/24/cheese-1238395_960_720.jpg',
+        description: 'great product really!',
+    },
+    {
+        id: 2,
+        price: 3,
+        name: 'ice cream',
+        image: '2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
+        description: 'be careful - very cold',
+    },
+];
+
+function getTotalProducts(){
+    const total = document.getElementById('total-products');
+    total.innerHTML = products.length;
 }
 
 
+// take products data and add it into the html of each card
+function displayProducts() {
+    const IMG_PATH = 'https://cdn.pixabay.com/photo/'; // configuration of the project
+    const container = document.getElementById('products-container');
+    let html = '';
 
+    products.forEach(prod => {
+        html +=
+            `<div class="card" style="width: 18rem;">
+                <img src="${IMG_PATH}${prod.image}"
+                    class="card-img-top" alt="${prod.description}">
+                <div class="card-body">
+                    <h5 class="card-title">${prod.name}</h5>
+                    <p class="card-text">
+                        ${addTax(prod.price)}</p>
+                    <a href="#" class="btn btn-primary">View Details</a>
+                </div>
+            </div>`;
+    })
 
+    container.innerHTML = html;
+    getTotalProducts();
+}
 
-
-
-
-/* function getRandomIntInclusive(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-} */
-
-
-
-
-
-
-
-
-
-
-
-/* try {
-    console.log('do somthing...');
-    console.log(x + 'somthing went terribly wrong....');
-    throw Error('Teribbley wrong')
-} catch (err) {
-    console.log(err);
-} */
-
-
-/* try {
-    console.log('do somthing...');
-    console.log(x + 'somthing went terribly wrong....');
-} catch (err) {
-    console.log(err);
-} */
-
-
-/*  const y = 'ok';
-throw Error('somthing went wrong');
- console.log('Everything is ok'); */
+displayProducts();
