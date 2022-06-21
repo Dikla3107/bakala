@@ -1,49 +1,56 @@
-/* function addTax(price) {
-    if (!price || price <= 0 || typeof (price) === 'string') {
-        throw Error('Nothing is for free! please supply a price');
+function addTax(price){
+    if (!price || price <= 0 || typeof (price) === 'string'){
+        throw error('nothing is for free! please supply a price');
     }
-
-    const vat = 1.17;
+    const vat = 1.17; //Maam
     const total = (price * vat).toFixed(2);
     return total;
 }
 
-function generateId() {
+function generateId(){
     const time = new Date().getTime();
-    return Math.floor(Math.random() * time);
+    return.Math.floor(Math.random() * time);
 }
- */
 
 const products = [{
-        id: 1,
-        price: 15,
-        name: 'yello cheese',
-        image: 'https://cdn.pixabay.com/photo/2016/03/05/19/24/cheese-1238395_960_720.jpg',
-        description: 'great product really'
-    },
-    {
-        id: 2,
-        price: 3,
-        name: 'ice cream',
-        image: 'https://cdn.pixabay.com/photo/2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
-        description: 'be careful - very cold'
-    },
+    id: 1,
+    price: 15,
+    name: 'Yellow Cheese',
+    image: '2016/03/05/19/24/cheese-1238395_960_720.jpg',
+    description: 'great product really!'
+},
+{
+id: 2,
+price: 3,
+name: 'Ice cream',
+image: '2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
+decription: 'be careful - very cold',
+},
+{
+    id: 3,
+    price: 55,
+    name: 'aaa',
+    image: '2017/04/18/15/10/strawberry-ice-cream-2239377_640.jpg',
+    desription: '',
+}
 ];
 
-function displayProduct() {
-    const container = document.getElementById('products-container');
-    products.forEach(product => {
+function search product(){
+    const searchField = document.getElementById('search-field');
+    const - searchTerm = searchField.ariaValueMax.trim(); /* //' tab '.trim
+    () => 'tab' */
 
-        container.innerHTML = `<div class="card" style="width: 18rem;">
-    <img src="${product.image}"
-    class="card-img-top" alt="${product.description}">
-    <div class="card-body">
-    <h5 class="card-title">${product.name}</h5>
-    <p class="card-text">$${product.price}</p>
-    <a href="#" class="btn btn-primary">View Details</a>
-    </div>
-    </div>`;
-        products++;
+    const searchResult = products.filter(prod =>{
+        return prod.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase)
     });
+
+    //console.log(searchResult); // = []
+    console.log('2) after search - call to function with search results';
+    displayProducts(searchResult)
 }
-displayProduct();
+function getTotalProducts(){
+    const total = document.getElementById('total-products');
+    total.innerHTML = products.length;
+}
